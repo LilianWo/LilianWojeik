@@ -1,0 +1,197 @@
+.hero {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh; /* Sécurité mobile */
+  overflow: hidden;
+  position: relative;
+  background-color: #fff; /* Fond de secours */
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/images/Lilian.jpg'); /* Vérifie bien ton chemin */
+  background-repeat: no-repeat;
+  
+  /* POSITION : On cale l'image à DROITE (right) pour que ton visage reste visible */
+  background-position: right center; 
+  background-size: cover; 
+  z-index: 1;
+}
+
+.hero-header {
+  position: absolute;
+  top: 5%;
+  left: 7.5%; 
+  z-index: 20;
+  max-width: 80%; /* Évite que le nom touche le bord droit */
+}
+
+.hero-name {
+  color: #b41919;
+  /* Taille dynamique : minimum 1.8rem, s'adapte à l'écran, max 5rem */
+  font-size: clamp(1.8rem, 8vw, 5rem);
+  font-family: serif;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.hero-sub {
+  font-family: serif;
+  font-weight: 900;
+  font-size: clamp(0.7rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.hero-content {
+  position: absolute; 
+  bottom: 4%;           
+  left: 7.5%; /* Même marge que le header pour un alignement parfait */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligne tout à gauche sur l'axe imaginaire */
+}
+
+.portfolio-title {
+  color: #b41919;
+  /* S'adapte pour ne jamais sortir de l'écran en largeur */
+  font-size: clamp(3rem, 15vw, 15vw); 
+  font-family: serif; 
+  font-weight: 900;
+  margin: 0;
+  line-height: 0.8;
+  letter-spacing: -5px;
+}
+
+.hero-date {
+  margin-top: 10px; 
+  color: #000;
+  font-family: serif;
+  font-weight: 900;
+  font-size: clamp(0.8rem, 1.5vw, 1.5vw);
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.red-text {
+  color: #b41919;
+}
+
+/* --- AJUSTEMENTS SPÉCIFIQUES SMARTPHONE --- */
+@media (max-width: 600px) {
+  .hero-background {
+    /* On recentre un peu plus l'image pour garder le sujet visible */
+    background-position: 70% center; 
+  }
+
+  .hero-header {
+    top: 10%; /* On descend un peu le nom pour ne pas qu'il soit collé en haut */
+    left: 5%;
+    max-width: 90%;
+  }
+
+  .hero-name {
+    /* On force une taille plus grande : ici 2.5rem minimum au lieu de 1.8 */
+    font-size: clamp(2.5rem, 12vw, 4rem); 
+    margin-bottom: 10px;
+  }
+
+  .hero-sub {
+    /* On garde un sous-titre bien lisible */
+    font-size: clamp(1.2rem, 6vw, 2rem);
+    line-height: 1.1;
+  }
+
+  .portfolio-title {
+    /* On réduit la taille pour mobile : entre 2.5rem et 12vw */
+    /* 12vw permet au mot de tenir sur une seule ligne sans être coupé */
+    font-size: clamp(2.5rem, 12vw, 12vw); 
+    
+    letter-spacing: -1px; /* On réduit le serrage pour gagner en lisibilité */
+    line-height: 0.9;
+    width: 100%; /* S'assure qu'il reste dans son container */
+    word-wrap: break-word; /* Sécurité au cas où */
+  }
+
+  .hero-content {
+    left: 5%;
+    bottom: 10%; 
+    width: 90%; /* On donne une limite de largeur au bloc de texte */
+  }
+
+  .hero-date {
+    margin-top: 15px;
+    font-size: 1rem; /* On fixe la taille pour que ce soit bien lisible */
+    letter-spacing: 1px;
+  }
+}
+
+/* On s'assure qu'aucun élément ne crée d'espace invisible */
+.App {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0; /* Force à zéro */
+  padding: 0;
+  overflow: hidden;
+  display: block; /* Évite les comportements inline */
+}
+
+.nav-section {
+  position: relative;
+  width: 100vw;
+  margin: 0; /* S'assure qu'il n'y a pas d'espace au dessus */
+  background-color: #D6CEC3; 
+  display: flex;
+  flex-direction: column;
+  /* On enlève le justify-content: center si tu veux que 
+     le menu commence direct en haut de la section */
+}
+
+.section-title {
+  /* On utilise EXACTEMENT la même police que ton menu */
+  font-family: serif; 
+  font-weight: 900;
+  font-size: 8vw; /* Un peu plus gros pour marquer la section */
+  text-align: center;
+  
+  /* L'ESPACE : Très important pour ne plus être collé */
+  padding: 120px 0 80px 0; 
+  
+  /* On garde ton fond beige/gris */
+  background-color: #D6CEC3; 
+  color: #000;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px; /* On remet le même espacement que le menu */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Optionnel : Ajouter l'étoile rouge de ton menu pour le rappel visuel */
+.section-title::after, .section-title::before {
+  content: "✦";
+  color: #b41919;
+  font-size: 5vw;
+}

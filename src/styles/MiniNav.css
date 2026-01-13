@@ -1,0 +1,76 @@
+/* --- MINI FLOWING NAV --- */
+.mini-flowing-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #000; 
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Le bouton Back qui reste fixe à gauche */
+.nav-back-btn {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  padding: 0 30px;
+  background: #b41919; 
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001; /* Reste au-dessus du texte qui défile */
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-back-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Conteneur du texte */
+.mini-ticker {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: mini-scroll 15s linear infinite; /* Un peu plus rapide pour le look mini */
+}
+
+.ticker-track span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 0.9rem;
+  color: #fff;
+  letter-spacing: 2px;
+  padding-right: 40px; /* Espace entre les répétitions */
+  display: flex;
+  align-items: center;
+}
+
+/* Animation fluide sans saut */
+@keyframes mini-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Ajustement global de la page About */
+.about-page {
+  background-color: #D6CEC3;
+  min-height: 100vh;
+  padding-top: 100px !important; /* Pour ne pas être caché par le bandeau noir */
+}

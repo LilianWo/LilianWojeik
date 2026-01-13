@@ -1,0 +1,108 @@
+/* --- BANDEROLES (LISTE) - RETOUR AUX BASES --- */
+.projects-container { width: 100%; display: flex; flex-direction: column; padding-top: 100px; }
+.project-row { position: relative; width: 100%; height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; border-bottom: 1px solid rgba(0,0,0,0.08); }
+
+.project-bg-overlay { position: absolute; right: 6%; top: 50%; transform: translateY(-50%) scale(0.9); width: 380px; height: 220px; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0; z-index: 1; transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1); pointer-events: none; }
+.project-row:hover .project-bg-overlay { opacity: 0.8; transform: translateY(-50%) scale(1); }
+
+.project-content { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1); z-index: 2; }
+.project-content.is-hovered .project-title { transform: translateX(-380px); }
+
+.project-title { margin: 0; white-space: nowrap; transition: transform 0.7s ease; }
+
+.project-details { position: absolute; left: 48%; top: 50%; transform: translate(30px, -50%); opacity: 0; transition: 0.6s ease; width: 350px; display: flex; flex-direction: column; align-items: flex-start; }
+.project-content.is-hovered .project-details { opacity: 1; transform: translate(0, -50%); }
+
+.tag { border: 1.5px solid #000; padding: 4px 12px; font-size: 11px; font-weight: 800; margin-right: 8px; margin-bottom: 5px; text-transform: uppercase; }
+.project-spec { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 900; color: #b41919; text-transform: uppercase; }
+.project-number { position: absolute; bottom: 25px; left: 40px; font-weight: 900; font-size: 1.8rem; opacity: 0.2; }
+
+/* --- MODALE GÉANTE (MIX FIXE + GRANDE TAILLE) --- */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px);
+  z-index: 99999; display: flex; align-items: center; justify-content: center;
+}
+
+/* --- MODALE GÉANTE CORRIGÉE --- */
+.project-modal-giant-tall {
+  background: #D6CEC3; 
+  width: 94vw; 
+  height: 98vh; 
+  max-width: none !important;
+  border: 3px solid #000; 
+  /* On augmente le padding latéral pour décoller du bord */
+  padding: 60px 80px; 
+  position: relative; 
+  display: flex; 
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* LAYOUT INTERNE : On remplace space-between par flex-start pour tout caler à gauche */
+.modal-inner-layout { 
+  display: flex; 
+  flex: 1; 
+  gap: 100px; /* On augmente l'espace entre le texte et l'image */
+  align-items: center; 
+  justify-content: flex-start; /* Aligne tout vers la gauche */
+  width: 100%;
+}
+
+.modal-text-content { 
+  flex: 0 0 35%; 
+  /* Pas besoin de padding-left ici, le padding du parent suffit */
+}
+
+.modal-visual-content { 
+  flex: 1; /* L'image prend le reste de l'espace */
+  height: 100%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  /* On ajoute une marge à droite pour ne pas toucher le bord */
+  padding-right: 40px; 
+}
+
+.modal-hero-img { 
+  width: 100%; 
+  max-width: 900px; /* On limite un peu pour pas que ça soit énorme */
+  height: auto; 
+  max-height: 80vh; 
+  object-fit: contain; 
+}
+
+/* NAVIGATION : On la décale un peu pour qu'elle soit bien alignée avec le reste */
+.modal-navigation-bottom { 
+  position: absolute; 
+  bottom: 50px; 
+  right: 80px; 
+  display: flex; 
+  gap: 20px; 
+}
+
+.close-modal-btn { position: absolute; top: 15px; right: 25px; background: none; border: none; color: #b41919; font-size: 4.5rem; cursor: pointer; z-index: 100; line-height: 1; }
+.slide-number-top { position: absolute; top: 30px; left: 40px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.85rem; color: #000; letter-spacing: 2px; text-transform: uppercase; }
+
+/* LAYOUT INTERNE MODALE */
+.modal-inner-layout { display: flex; flex: 1; gap: 60px; align-items: center; justify-content: space-between; overflow: hidden; }
+.modal-text-content { flex: 0 0 38%; }
+.modal-visual-content { flex: 0 0 58%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.modal-hero-img { width: 100%; height: auto; max-height: 80vh; object-fit: contain; }
+
+/* TYPO MODALE */
+.modal-big-title { font-family: serif; font-size: 8vw; font-weight: 900; line-height: 0.8; text-transform: uppercase; margin-bottom: 30px; }
+.modal-description-text { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; line-height: 1.5; color: #000; }
+
+.modal-tools-grid { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+.modal-tag-black { background: #000; color: #fff; padding: 10px 20px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; }
+
+/* BOUTONS NAVIGATION ROUGES */
+.modal-navigation-bottom { position: absolute; bottom: 40px; right: 60px; display: flex; gap: 20px; }
+.nav-btn-brut { background: #000; color: #fff; border: none; padding: 20px 50px; font-family: 'Montserrat', sans-serif; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+.nav-btn-brut.red { background: #b41919; }
+.nav-btn-brut:hover { transform: translateY(-3px); }
+
+@media (max-width: 1024px) {
+  .modal-inner-layout { flex-direction: column; overflow-y: auto; padding-top: 50px; }
+  .modal-big-title { font-size: 14vw; }
+}

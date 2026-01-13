@@ -1,0 +1,115 @@
+.flowing-menu {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+/* --- VARIANTES --- */
+.menu-full {
+  flex-direction: column;
+}
+
+.menu-mini {
+  flex-direction: row;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 80px; /* Fixe la hauteur pour le menu du haut */
+}
+
+/* --- L'ITEM DE MENU --- */
+.menu-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+  text-decoration: none;
+  border-bottom: 6px solid #000;
+  height: 180px; /* HAUTEUR FIXE pour éviter le gonflement en mode FULL */
+}
+
+.menu-full .menu-item:first-child {
+  border-top: 6px solid #000;
+}
+
+/* Ajustements version MINI */
+.menu-mini .menu-item {
+  height: 80px; /* HAUTEUR FIXE en mode MINI */
+  border-bottom: 6px solid #000;
+  border-right: 3px solid #000;
+}
+
+.menu-mini .menu-item:last-child {
+  border-right: none;
+}
+
+/* --- COULEURS --- */
+.bg-about { background-color: #C2B6A9; }
+.bg-contact { background-color: #D2C8BD; }
+.bg-work { background-color: #E0D8CE; }
+
+.menu-item.is-hovered {
+  background-color: #000 !important;
+}
+
+/* --- TEXTES --- */
+.menu-text, .marquee-item {
+  font-family: serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.menu-text {
+  font-size: 3.5vw;
+  color: #000;
+}
+
+/* Taille réduite pour le menu MINI */
+.menu-mini .menu-text, .menu-mini .marquee-item, .menu-mini .marquee-star {
+  font-size: 1.5rem !important;
+}
+
+.red-link { color: #b41919; }
+
+/* --- MARQUEE (LA CORRECTION EST ICI) --- */
+.marquee-container {
+  position: absolute; /* Sort le marquee du flux pour ne pas pousser les bords */
+  inset: 0;
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  align-items: center;
+  pointer-events: none;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+}
+
+.marquee-item {
+  font-size: 3.5vw; 
+  color: #fff; 
+  display: flex;
+  align-items: center;
+}
+
+.marquee-star {
+  color: #b41919;
+  font-size: 3.5vw; 
+  margin: 0 10vw; 
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(-0.2vw); 
+}
+
+.menu-mini .marquee-star {
+    margin: 0 4vw;
+}
